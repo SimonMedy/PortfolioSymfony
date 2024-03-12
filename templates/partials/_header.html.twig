@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+	<a class="navbar-brand js-scroll-trigger" href="#page-top">
+		<span class="d-block d-lg-none">
+			<i class="fa-solid fa-laptop-code"></i>
+			MS
+		</span>
+		<span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="profile4.gif" alt="..."/></span>
+	</a>
+	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarResponsive">
+		<ul class="navbar-nav">
+			<li class="nav-item">
+				<a class="nav-link js-scroll-trigger" href="{{ path('app_accueil') }}#about">à propos</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link js-scroll-trigger" href="{{ path('app_accueil') }}#experience">Expérience</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link js-scroll-trigger" href="{{ path('app_accueil') }}#education">éducation</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link js-scroll-trigger" href="{{ path('app_accueil') }}#skills">Compétences</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link js-scroll-trigger" href="{{ path('app_accueil') }}#interests">Centres d'intérets</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link js-scroll-trigger" href="{{path('app_login')}}"><i class="fa-solid fa-right-to-bracket"></i> Connexion</a>
+			</li>
+			
+			{% if app.user%}
+				<hr class="m-2"/>
+				{% if is_granted('ROLE_ADMIN') %}
+					<li class="nav-item">
+						<a class="nav-link js-scroll-trigger" href="{{path('app_experiences')}}">Experiences</a>
+					</li>
+				{% endif %}
+				<li class="nav-item">
+					<a class="nav-link js-scroll-trigger text-warning" href="{{path('app_logout')}}"><i class="fa-solid fa-right-from-bracket"></i> Déconnexion</a>
+				</li>
+			{% endif %}
+		</ul>
+	</div>
+</nav>

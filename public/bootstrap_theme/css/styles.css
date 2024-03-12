@@ -569,6 +569,7 @@ progress {
   list-style: none;
 }
 
+
 .list-inline-item {
   display: inline-block;
 }
@@ -2850,8 +2851,8 @@ textarea.form-control-lg {
   --bs-btn-bg: #2aabe3;
   --bs-btn-border-color: #2aabe3;
   --bs-btn-hover-color: #000;
-  --bs-btn-hover-bg: #c77556;
-  --bs-btn-hover-border-color: #c46d4c;
+  --bs-btn-hover-bg: #0095d4;
+  --bs-btn-hover-border-color: #0095d4;
   --bs-btn-focus-shadow-rgb: 161, 79, 48;
   --bs-btn-active-color: #000;
   --bs-btn-active-bg: #ca7d60;
