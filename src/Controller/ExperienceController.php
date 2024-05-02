@@ -43,12 +43,6 @@ class ExperienceController extends AbstractController
         ]);
     }
 
-    #[Route('/test/experience', name: 'experience_notfound')]
-    public function test()
-    {
-        return $this->render('experience/experience_notfound.html.twig', []);
-    }
-
     #[Route('/experience/{id}', 'experience', methods: ['GET', 'POST'], requirements: ['id' => '\d+'])]
     public function experience(int $id, EntityManagerInterface $em, Request $request): Response
     {
