@@ -4,8 +4,12 @@
 			<i class="fa-solid fa-laptop-code"></i>
 			MS
 		</span>
-		<span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="profile4.gif" alt="..."/></span>
+		<span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="../profile4.gif" alt="..."/></span>
 	</a>
+	{% if is_granted('ROLE_ADMIN') %}
+		<span class="badge rounded-pill bg-danger ">👑 Administrateur</span>
+		<br/>
+	{% endif %}
 	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
@@ -27,9 +31,11 @@
 				<a class="nav-link js-scroll-trigger" href="{{ path('app_accueil') }}#interests">Centres d'intérets</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link js-scroll-trigger" href="{{path('app_login')}}"><i class="fa-solid fa-right-to-bracket"></i> Connexion</a>
+				<a class="nav-link js-scroll-trigger" href="{{path('app_login')}}">
+					<i class="fa-solid fa-right-to-bracket"></i>
+					Connexion</a>
 			</li>
-			
+
 			{% if app.user%}
 				<hr class="m-2"/>
 				{% if is_granted('ROLE_ADMIN') %}
@@ -38,7 +44,9 @@
 					</li>
 				{% endif %}
 				<li class="nav-item">
-					<a class="nav-link js-scroll-trigger text-warning" href="{{path('app_logout')}}"><i class="fa-solid fa-right-from-bracket"></i> Déconnexion</a>
+					<a class="nav-link js-scroll-trigger text-warning" href="{{path('app_logout')}}">
+						<i class="fa-solid fa-right-from-bracket"></i>
+						Déconnexion</a>
 				</li>
 			{% endif %}
 		</ul>

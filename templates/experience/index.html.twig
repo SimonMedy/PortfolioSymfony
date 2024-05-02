@@ -1,7 +1,68 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ExperienceController!{% endblock %}
+{% block title %}Hello Experi
+{% endblock %}
 
 {% block body %}
+	{% if is_granted('ROLE_ADMIN') %}
+		<div class="d-flex justify-content-left w-100 ms-3 mt-4 mb-3">
+			<a class="btn btn-primary" href="{{path('create_experience')}}">Ajouter une expérience</a>
+		</div>
+		<div class="d-flex justify-content-left w-100 ms-3 mt-4 mb-3">
+			<a class="btn btn-primary" href="{{path('experience_notfound')}}">test</a>
+		</div>
 
+		<style>
+			.rounded-table {
+				border-radius: 10px; /* Ajustez la valeur selon vos préférences */
+				overflow: hidden; /* Assurez-vous que le bord arrondi est visible */
+			}
+		</style>
+
+		<div class=" ms-3 mt-4 me-3">
+			<div class="mt-4 w-100">
+				<div class="table-responsive rounded-table">
+					<table class="table table-hover">
+						<thead>
+							<tr class="table-primary">
+								<th scope="col">ID</th>
+								<th scope="col">Titre</th>
+								<th scope="col">Date de début</th>
+								<th scope="col">Date de fin</th>
+								<th scope="col">Sous titre</th>
+								<th scope="col">Contenu</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for experience in experiences %}
+								<tr class="table-secondary">
+									
+									<td scope="row">
+										<a href="{{path("experience",{id:experience.id})}}" style="text-decoration: none">{{experience.id}}</a>
+									</td>
+									<td>{{experience.titre}}</td>
+									<td>{{experience.datedebut ? experience.datedebut.format('d/m/Y') : '' }}</td>
+									<td>{{experience.datefin ? experience.datefin.format('d/m/Y') : '' }}</td>
+									<td>
+										{% if experience.soustitre|length > 30 %}
+											{{ experience.soustitre|slice(0, 30) ~ '...' }}
+										{% else %}
+											{{ experience.soustitre }}
+										{% endif %}
+									</td>
+									<td>
+										{% if experience.contenu|length > 50 %}
+											{{ experience.contenu|slice(0, 50) ~ '...' }}
+										{% else %}
+											{{ experience.contenu }}
+										{% endif %}
+									</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	{% endif %}
 {% endblock %}

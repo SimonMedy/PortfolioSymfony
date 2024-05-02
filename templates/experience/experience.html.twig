@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello experience
+{% endblock %}
+
+{% block body %}
+	{% if is_granted('ROLE_ADMIN') %}
+		<div class=" ms-3 mt-4 me-3">
+			<h4 class="card-title text-primary mb-2" style="font-weight:bold">Modifier l'experience</h4>
+			{{form_start(form)}}
+            {{form_errors(form)}}
+			<table class="table table-hover">
+				<thead>
+					<tr class="table-primary">
+						<th scope="col">ID</th>
+						<th scope="col">Titre</th>
+						<th scope="col">Date de début</th>
+						<th scope="col">Date de fin</th>
+						<th scope="col">Sous titre</th>
+						<th scope="col">Contenu</th>
+						<th scope="col">Sauvegarder</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="table-secondary">
+						<th scope="row">{{experience.id}}</th>
+						<td>{{form_widget(form.titre)}}</td>
+						<td>{{form_widget(form.date_debut)}}</td>
+						<td>{{form_widget(form.date_fin)}}</td>
+						<td>{{form_widget(form.soustitre)}}</td>
+						<td>{{form_widget(form.contenu)}}</td>
+						<td>
+							{{form_widget(form.submit, { 'label': 'Sauvegarder' }) }}
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		{{form_end(form)}}
+	{% endif %}
+{% endblock %}
